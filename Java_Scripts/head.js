@@ -3,7 +3,6 @@ document.write(`
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Kofi Barton-Byfield</title>
-    <link href="../CSS_Files/home_page.css" rel="stylesheet">
     <link href="../CSS_Files/css.css" rel="stylesheet">
 
 
