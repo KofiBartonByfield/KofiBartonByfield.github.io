@@ -150,7 +150,7 @@ footer {
     width: 65%; 
     padding-right: 4%; 
     flex: 2;
-    max-height: 100vh; /* Adjust height as needed */
+    max-height: 85vh; 
     overflow-y: auto;
     /* scrollbar-width: none; */
     scrollbar-width:thin; /* Thin scrollbar */
