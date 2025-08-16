@@ -1,0 +1,396 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.5s ease-in-out;
+    scrollbar-width: none; /* For Firefox */
+    overflow-x: hidden; /* Disable horizontal scrolling */
+
+}
+
+a {
+    text-decoration: none;
+    color: #2e3030;
+}
+
+
+
+/* Footer */
+footer {
+    background-color: #779f9e9c;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Ensure it stays at the bottom of the content */
+    transition: background-color 0.3s ease-in-out;
+    margin-top: 5%;
+}
+
+
+
+
+/* Header */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    background-color: #6b8f8e;
+    height: 1cm;
+   
+}
+
+
+.title-text {
+
+    text-align: left;
+    color: white;
+    font-size: 1.2cm;
+    transition: color 0.3s ease-in-out; /* Smooth text color change */
+}
+
+
+/* Content Container */
+.content-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    max-width: 100%; /* Prevent it from growing beyond the viewport */
+
+}
+
+/* Headshot */
+.headshot-container {
+    margin-right: 20px;
+   max-width: 400px;
+   
+}
+
+.headshot {
+    width: 300px;
+    height: auto;
+    border-radius: 3.5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out; /* Smooth zoom on hover */
+}
+
+/* .about-me{
+    width: 100%;
+    font-size: 18px; 
+    color: #303030; 
+}
+
+
+ */
+
+
+
+
+
+/* PDF Container */
+.pdf-container {
+    border: 2px solid black;
+    max-height: 1400px;
+    width: 75%;
+    height: 900px;
+    display:inline;
+
+
+}
+
+.pdf-wrapper {
+    padding-left: 100px;
+    padding-right: 100px;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Horizontally centres content inside */
+
+
+}
+
+.pdf-text {
+    position: relative;
+    background: #6b8f8ec3;
+    padding: 10px;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+    width: max-content;
+    height:fit-content;
+    padding-top: 0;
+    margin-top: 10px;
+
+
+}
+
+
+.pdf-text a {
+    font-size: 20px;
+    color: white;
+}
+
+.pdf-text:hover {
+    transform: scale(1.05); /* Larger zoom-in on hover */
+    transition: transform 0.3s ease;
+
+}
+
+
+.half_pdf_container {
+    
+    max-height: 1400px;
+    width: 50%;
+    height: 900px;
+    padding-left: 30px;
+}
+
+
+
+
+/* Logo Container */
+.LogoContainer {
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    margin-left: auto; /* Push this item to the far right */
+    padding-right: 0.5%;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+.headshot_name{text-align: left; font-size: 30px; color: #303030; font-weight: bolder;}
+
+.projects-title{font-size: 35px; color: #303030; font-weight: bolder;}
+
+/*projects*/
+
+.projects-container {
+    display: flex; 
+    flex-direction: column; /* Stack children vertically */
+    align-items: stretch; /* Make child elements stretch to fill the width */
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+    grid-gap: 2%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 2%;
+    
+}
+
+
+
+
+.tools_title{
+    font-size: 270%;
+    color: aliceblue;
+    padding-left: 10px;
+    vertical-align: baseline;
+    display: inline-block; /* Ensures the div inside <a> is clickable */
+    cursor: pointer; /* Changes cursor to indicate clickability */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.image-item {
+    text-align: left;
+    overflow: hidden; /* Ensure the content doesn't overflow its container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    width: 90%;
+    margin: 1%;
+
+}
+
+.image-item:hover {
+    transform: translateY(-5px); /* Adjust the value to move it up more or less */
+    transition: transform 0.4s ease; /* Smooth transition */
+}
+
+
+
+.image-item img {
+    width: 80%;
+    height: auto;
+    display: block;
+    align-items: center;
+}
+
+.image-item h3 {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.image-item p {
+    font-size: 1rem;
+    color: #777;
+}
+
+
+
+
+
+
+
+button {
+    padding-top: 5  px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    background-color: #6b8f8e;
+    border: 0px solid #2e3030;
+    border-radius: 4px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin-left: 10px; /* Space between buttons */
+    padding-left: 100px;
+ 
+}
+   
+
+
+
+.nav-button, .nav-button2  {
+    font-size: 30px; /* Change this value to increase or decrease arrow size */
+    padding: 0px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 0px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+  
+}
+
+
+.divider {
+    height: 1px; /* Thickness of the divider */
+    background-color: #ccc; /* Color of the divider */
+    margin: 0 auto 25px; /* Space around the divider, auto left and right for centering */
+    width: 90%; /* Width of the divider */
+    
+}
+
+
+
+.banner {
+    position: relative;
+    width: 100%;
+    height: 25px; /* Adjust height as needed */
+    background-color: #f39c12; /* Banner color */
+    overflow: hidden;
+}
+
+.banner-text {
+    position: absolute;
+    white-space: nowrap;
+    color: white;
+    font-size: 20px; /* Adjust font size as needed */
+    animation: moveBanner 30s linear infinite; /* Animation duration and type */
+    
+}
+
+@keyframes moveBanner {
+    0% {
+        left: 100%; /* Start off-screen right */
+    }
+    100% {
+        left: -100%; /* Move left completely */
+    }
+   
+}
+
+
+.new-tab-icon{
+    width: 20px;
+    vertical-align:top;
+    padding-top: 1%;
+}
+.arrows {
+    display: none; }
+
+
+
+
+/*SUPPORT FOR MOBILE*/
+@media (max-width: 900px) { /* Adjust the breakpoint as needed */
+    .image-grid {grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */ }
+    .headshot {width: 200px;}
+    .headshot-container {max-width: 300px;}
+    .headshot_name{font-size: 20px;}
+    .about-me{font-size: 13px; }
+    .projects-title{font-size: 25px; }
+
+    
+    
+}
+
+@media (max-width: 600px) { /* Further adjustment for very small screens */
+    .image-grid {grid-template-columns: 1fr; /* 1 column on very small screens */}
+    .headshot {width: 150px;}
+    .headshot-container {max-width: 250px;}
+    .headshot_name{font-size: 15px;}
+    .about-me{font-size: 13px; }
+    .projects-title{font-size: 20px; }
+    .image-item h3 {font-size: 10px;}
+    /*.tools_title{display: none;}*/
+
+    .search-bar {width: 30px;
+                min-width: 30px;}
+    .pdf-container {max-height: 700px;}
+
+    .pdf-wrapper {padding-left: 40px;
+                padding-right: 40px;}
+}
+
+@media (max-width: 400px) { /* Further adjustment for very small screens */
+    .image-grid {grid-template-columns: 1fr; /* 1 column on very small screens */}
+    .headshot {width: 150px;}
+    .headshot-container {max-width: 280px;}
+    .headshot_name{font-size: 14px;}
+    .about-me{font-size: 13px; }
+    .projects-title{font-size: 20px; }
+    .image-item h3 {font-size: 20px;}
+
+
+    .tools_title{display: none;}
+    .pdf-container {max-height: 500px;}
+
+
+   /* .search-container { display: none;}*/
+    .search-bar {width: 30px;min-width: 30px;}
+    .nav-button{display: none;}
+    .arrows {display: inline-block; }
+        
+}

@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../Java_Scripts/head.js"></script>
+</head>
+
+
+
+<style>
+    .container {
+        padding: 20px; 
+        padding-bottom: 50px;
+        max-width: 500px;
+        margin: auto;
+        text-align: left;
+        min-width: 500px;
+        
+    }
+   
+
+    #word-count {
+        margin-top: 10px;
+        font-weight: bold;
+    }
+
+    textarea {
+        width: 100%; /* Makes the textarea fill the container width */
+        box-sizing: border-box; /* Ensures padding is included in width calculation */
+    }
+    .distance-converter {
+        display: flex;
+        gap: 10px; /* Space between elements */
+    }
+</style>
+
+
+
+<body>
+    
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+
+    <div class="banner">
+        <div class="banner-text" id="bannerText">🚧 Still under construction! Some features are a work in progress, but feel free to explore and check back soon for updates! 🚧</div>
+    </div>
+
+        
+    <section class="container">
+
+        <h2>Word Counter</h2>
+
+        <textarea id="text-input" rows="10"  cols="100"placeholder="Type something..."></textarea>
+        <div id="word-count">Word count: 0</div>
+
+        <script>
+            document.getElementById('text-input').addEventListener('input', function() {
+                let text = this.value.trim();
+                let wordCount = text ? text.split(/\s+/).length : 0;
+                document.getElementById('word-count').textContent = 'Word count: ' + wordCount;
+            });
+        </script>
+
+
+    </section>
+
+
+    <div class="divider"></div>
+
+    <section class="container">
+    
+        <h2>Distance Converter</h2>
+        <div class="distance-converter">
+
+            <input type="number" id="distanceFrom" placeholder="Enter distance" oninput="convertDistance()">
+            <select id="unitFrom" onchange="convertDistance()">
+                <option value="MILES">Miles</option>
+                <option value="KM">Kilometres</option>
+                <option value="FEET">Feet</option>
+            </select>
+            <input type="number" id="distanceTo" placeholder="Result" readonly>
+            <select id="unitTo" onchange="convertDistance()">
+                <option value="MILES">Miles</option>
+                <option value="KM">Kilometres</option>
+                <option value="FEET">Feet</option>
+            </select>
+        </div>
+    </section>
+        
+    <script>
+        const distanceRates = {
+            MILES: 1,          // Base unit: Miles
+            KM: 1.60934,       // Conversion factor from Miles to Kilometres
+            FEET: 5280         // Conversion factor from Miles to Feet
+        };
+    
+        function convertDistance() {
+            const distanceFrom = parseFloat(document.getElementById("distanceFrom").value);
+            const unitFrom = document.getElementById("unitFrom").value;
+            const unitTo = document.getElementById("unitTo").value;
+    
+            if (isNaN(distanceFrom)) {
+                document.getElementById("distanceTo").value = "";
+                return;
+            }
+    
+            // Convert using distance conversion factors
+            const result = (distanceFrom / distanceRates[unitFrom]) * distanceRates[unitTo];
+            document.getElementById("distanceTo").value = result.toFixed(2);
+        }
+    </script>
+        
+
+    <div class="divider"></div>
+
+
+    <section class="container">
+
+        <h2>Currency Converter</h2>
+
+        <input type="number" id="valueFrom" placeholder="Enter value" oninput="convert()">
+        <select id="currencyFrom" onchange="convert()">
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+        </select>
+        <input type="number" id="valueTo" placeholder="Result" readonly>
+        <select id="currencyTo" onchange="convert()">
+            <option value="GBP">GBP</option>
+            <option value="EUR">EUR</option>
+            <option value="USD">USD</option>
+        </select>
+
+       
+
+        <script>
+            const rates = {
+                GBP: 1,      // Base currency
+                EUR: 1.2,    // Conversion rate from GBP to EUR
+                USD: 1.5     // Conversion rate from GBP to USD
+            };
+
+            function convert() {
+                const valueFrom = parseFloat(document.getElementById("valueFrom").value);
+                const currencyFrom = document.getElementById("currencyFrom").value;
+                const currencyTo = document.getElementById("currencyTo").value;
+
+                if (isNaN(valueFrom)) {
+                    document.getElementById("valueTo").value = "";
+                    return;
+                }
+
+                // Convert using exchange rates
+                const result = (valueFrom / rates[currencyFrom]) * rates[currencyTo];
+                document.getElementById("valueTo").value = result.toFixed(2);
+            }
+        </script>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="container">
+    
+        <h2>Celsius to Fahrenheit Converter</h2>
+    
+        <div class="temperature-converter">
+            <input type="number" id="celsius" placeholder="Celsius" oninput="convertTemperature()">
+            <input type="number" id="fahrenheit" placeholder="Fahrenheit" readonly>
+        </div>
+    
+    </section>
+        
+    
+    
+    <script>
+        function convertTemperature() {
+            const celsiusValue = parseFloat(document.getElementById("celsius").value);
+    
+            if (isNaN(celsiusValue)) {
+                document.getElementById("fahrenheit").value = "";
+                return;
+            }
+    
+            // Convert Celsius to Fahrenheit
+            const fahrenheitValue = (celsiusValue * 9/5) + 32;
+            document.getElementById("fahrenheit").value = fahrenheitValue.toFixed(2);
+        }
+    </script>
+       
+</body>
+
+<div id="footer-placeholder"></div>
+
+
+</html>
