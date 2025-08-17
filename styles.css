@@ -14,6 +14,7 @@ html {
 }
 
 
+
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -189,8 +190,8 @@ html {
 }
 
 .about-text {
-    flex: 1; /* takes remaining space */
-}
+    flex: 1; }
+
 .about-text p{
     font-size: 1.1rem;
 }
@@ -342,4 +343,56 @@ html {
     text-decoration: none;
     color: inherit;
     display: block;
+}
+
+
+
+
+
+/* ====================================================== */
+
+
+@media (max-width: 1250px) {
+
+
+    .contact-sidebar {
+                    position: relative;
+                    bottom: 0; /* Stick to bottom */
+                    left: 0;
+                    width: 100%; /* Full width */
+
+  }
+
+  .projects{max-width: 100%;
+}
+.featured-projects{
+        max-width: 100%;
+        width: 90%;
+
+}
+
+
+.skills-list{max-width: 100%;}
+.about-me{
+    max-width: 90%;
+}
+
+
+
+
+.qualifications, .experience{
+    width:  150%;
+
+}
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 }
