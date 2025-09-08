@@ -17,7 +17,7 @@ async function fetchBlogs() {
     const response = await fetch(url);
     const data = await response.json();
 
-    // Get only .txt files
+    // Get only .txt files and sort by date (newest first)
     blogs = data
         .filter(file => file.name.endsWith(".txt"))
         .sort((a, b) => {
@@ -29,6 +29,12 @@ async function fetchBlogs() {
         });
 
     displayBlog(currentIndex);
+}
+
+// Format date nicely → e.g. 05092025 → 5 Sep 2025
+function formatDate(dd, mm, yyyy) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${parseInt(dd)} ${months[parseInt(mm) - 1]} ${yyyy}`;
 }
 
 // Display a single blog
@@ -47,14 +53,14 @@ async function displayBlog(index) {
     const response = await fetch(rawUrl);
     const content = await response.text();
 
-    // Extract title and date
+    // Extract title and keep capitals
     const title = blog.name
-        .replace(/_/g, " ")
-        .replace(".txt", "")
-        .replace(/\d{8}/, "")
-        .trim();
+        .replace(/_\d{8}\.txt$/, "") // remove _DDMMYYYY.txt
+        .replace(/_/g, " "); // replace underscores with spaces
+
+    // Format date properly
     const dateMatch = blog.name.match(/_(\d{2})(\d{2})(\d{4})/);
-    const date = `${dateMatch[1]}/${dateMatch[2]}/${dateMatch[3]}`;
+    const date = formatDate(dateMatch[1], dateMatch[2], dateMatch[3]);
 
     // Update UI
     blogTitle.textContent = title;
