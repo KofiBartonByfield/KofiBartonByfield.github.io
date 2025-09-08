@@ -1,21 +1,9 @@
- 
-# Kofi Barton-Byfield's Portfolio
+# Portfolio
 
-Hello and welcome to my portfolio website repository.
+This repository hosts my personal portfolio website, built using `HTML`, `CSS`, and `JavaScript`. The site showcases my projects, professional experience and a blog where I share insights, tutorials, and things I’m learning in data science, analytics and related fields.
 
-Simply click in this link to access the website
+The website is fully static and designed to be responsive, with a consistent header and navigation across all pages. A sidebar provides quick access to my contact information, and the main content dynamically updates to highlight my latest work. Blog posts are loaded directly from a folder of text files, allowing new entries to appear automatically without updating the code.
 
-http://bit.ly/3FaSdwt
+This portfolio demonstrates my skills in web development, data visualisation, and interactive design, while providing a platform to share my ongoing learning and projects.
 
-I began this project to teach myself the basics of HTML and CSS, however during the process I have obtained not only those skills but an interactive website to showcase my portfolio of my data science projects.
-
-This project was completed using Virtual Code Studio, and is hosted using the free inbuilt website platform GitHub Pages.
-
-Comments and  advice are always welcome! Just click the suggestions page at the bottom of every page in the footer.
-
-
-## Link for suggestions
-https://docs.google.com/forms/d/1mAzg3WcOZCq9ZZsWpKOoFJXbtojMB50Oe-i-fljy53w/edit?pli=1#responses
-
-
-
+You can view the live site here: https://KofiBartonByfield.github.io
