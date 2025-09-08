@@ -1,0 +1,12 @@
+# Data Visualisation Tips I Learned Today
+
+08/09/2025
+
+Today I spent some time improving my data visualisation skills. Here are a few things I picked up:
+
+1. Less is more — avoid clutter and focus on the key message.
+2. Use consistent colour schemes for better readability.
+3. Always label your axes clearly, even if you think it’s obvious.
+4. Interactive plots can make a huge difference when presenting complex datasets.
+
+Next, I’m planning to experiment with D3.js to make dynamic visualisations. I’ll post my progress soon.
