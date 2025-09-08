@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Images/k.png">
+
+
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-title">
+            <h1>Kofi Barton-Byfield</h1>
+            <p>Data Science | Econometrics | Data Analytics</p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="blogs.html" class="active">Blog</a>
+            <a href="experience.html">Experience</a>
+        </nav>
+    </header>
+
+<main class="content">
+    <h2>Blog Posts</h2>
+    <ul id="blog-list"></ul>
+</main>
+
+<script>
+const repoOwner = "KofiBartonByfield";
+const repoName = "KofiBartonByfield.github.io";
+const folderPath = "blogs";
+
+const blogList = document.getElementById("blog-list");
+
+// Format date nicely → 05/09/2025 → 5 Sep 2025
+function formatDate(dd, mm, yyyy) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${parseInt(dd)} ${months[parseInt(mm) - 1]} ${yyyy}`;
+}
+
+// Convert to Title Case
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+}
+
+// Fetch blog list
+async function fetchBlogList() {
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const blogs = data
+        .filter(file => file.name.endsWith(".txt"))
+        .sort((a, b) => {
+            const dateA = a.name.match(/_(\d{2})(\d{2})(\d{4})/);
+            const dateB = b.name.match(/_(\d{2})(\d{2})(\d{4})/);
+            const dA = new Date(`${dateA[3]}-${dateA[2]}-${dateA[1]}`);
+            const dB = new Date(`${dateB[3]}-${dateB[2]}-${dateB[1]}`);
+            return dB - dA;
+        });
+
+    // Display titles and dates
+    blogs.forEach(blog => {
+        const title = toTitleCase(
+            blog.name.replace(/_\d{8}\.txt$/, "").replace(/_/g, " ")
+        );
+        const dateMatch = blog.name.match(/_(\d{2})(\d{2})(\d{4})/);
+        const date = formatDate(dateMatch[1], dateMatch[2], dateMatch[3]);
+
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = `https://github.com/${repoOwner}/${repoName}/blob/main/${folderPath}/${blog.name}`;
+        link.target = "_blank";
+        link.textContent = `${title} — ${date}`;
+        li.appendChild(link);
+        blogList.appendChild(li);
+    });
+}
+
+fetchBlogList();
+</script>
+
+
+    <aside class="contact-sidebar">
+        <h3>Contact</h3>
+        <ul class="contact-list">
+            <li>
+                <a href="mailto:kbartonbyfield@gmail.com" target="_blank">
+                    <i class="fa fa-envelope" aria-hidden="true"></i> Email Me
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/kofi-barton-byfield-b7b83a293/" target="_blank">
+                    <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/KofiBartonByfield" target="_blank">
+                    <i class="fa fa-github" aria-hidden="true"></i> GitHub
+                </a>
+            </li>
+        </ul>
+
+
+        <hr class="sidebar-divider">
+
+        <div class="sidebar-extra">
+            <h4>More Info</h4>
+            <ul>
+                <li><strong>Location:</strong> London, UK</li>
+                <li><strong>Working towards:</strong> Publishing MSc dissertation research</li>
+            </ul>
+        </div>
+                
+    </aside>
+
+    <footer class="main-footer">
+        <p>© 2025 Kofi Barton-Byfield</p>
+    </footer>
+</body>
+</html>
