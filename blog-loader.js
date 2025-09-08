@@ -11,6 +11,20 @@ const nextBtn = document.getElementById("next-blog");
 let blogs = [];
 let currentIndex = 0;
 
+// Convert string into Title Case → e.g. "deep_learning_basics" → "Deep Learning Basics"
+function toTitleCase(str) {
+    return str.replace(/\w\S*/g, (word) => {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+    });
+}
+
+// Format date nicely → e.g. 05092025 → 5 Sep 2025
+function formatDate(dd, mm, yyyy) {
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    return `${parseInt(dd)} ${months[parseInt(mm) - 1]} ${yyyy}`;
+}
+
 // Fetch blog file list from GitHub API
 async function fetchBlogs() {
     const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
@@ -31,12 +45,6 @@ async function fetchBlogs() {
     displayBlog(currentIndex);
 }
 
-// Format date nicely → e.g. 05092025 → 5 Sep 2025
-function formatDate(dd, mm, yyyy) {
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return `${parseInt(dd)} ${months[parseInt(mm) - 1]} ${yyyy}`;
-}
-
 // Display a single blog
 async function displayBlog(index) {
     if (blogs.length === 0) {
@@ -53,10 +61,12 @@ async function displayBlog(index) {
     const response = await fetch(rawUrl);
     const content = await response.text();
 
-    // Extract title and keep capitals
-    const title = blog.name
-        .replace(/_\d{8}\.txt$/, "") // remove _DDMMYYYY.txt
-        .replace(/_/g, " "); // replace underscores with spaces
+    // Extract title & make it pretty
+    const title = toTitleCase(
+        blog.name
+            .replace(/_\d{8}\.txt$/, "") // Remove _DDMMYYYY.txt
+            .replace(/_/g, " ")          // Replace underscores with spaces
+    );
 
     // Format date properly
     const dateMatch = blog.name.match(/_(\d{2})(\d{2})(\d{4})/);

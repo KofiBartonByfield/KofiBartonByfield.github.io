@@ -1,0 +1,12 @@
+
+During my Data Analyst internship at Somer Valley Tennis, I had the opportunity to work with anonymised membership and financial data. One of my key tasks was to create an interactive Power BI dashboard to help the team understand trends in participation and revenue.
+
+Here are a few tips I learned about keeping dashboards neat and user-friendly:
+
+1. **Clarity is key** – Only include the visuals that directly answer the questions users care about. Avoid cluttering the dashboard with unnecessary charts.
+2. **Consistent formatting** – Use consistent colours, fonts, and chart types to make the dashboard look professional and easy to read.
+3. **Highlight important metrics** – Make the most important KPIs prominent so decision-makers can quickly spot trends and anomalies.
+4. **Interactivity matters** – Use slicers, filters, and drill-throughs to let users explore the data without overwhelming them.
+5. **Tell a story** – Arrange visuals in a logical flow, guiding the user from high-level insights to detailed analysis.
+
+Presenting the dashboard to the team was a great experience. It was satisfying to see how a well-structured visualisation can support strategic decisions and help improve member engagement. Next, I plan to explore more advanced Power BI features like dynamic measures and custom visuals to make dashboards even more impactful.
