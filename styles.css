@@ -349,54 +349,6 @@ html {
 
 
 
-/* ====================================================== */
-
-
-@media (max-width: 1250px) {
-
-
-    .contact-sidebar {
-                    position: relative;
-                    bottom: 0; /* Stick to bottom */
-                    left: 0;
-                    width: 100%; /* Full width */
-
-  }
-
-  .projects{max-width: 100%;
-}
-.featured-projects{
-        max-width: 100%;
-        width: 90%;
-
-}
-
-
-.skills-list{max-width: 100%;}
-.about-me{
-    max-width: 90%;
-}
-
-
-
-
-.qualifications, .experience{
-    width:  150%;
-
-}
-  .main-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .main-nav {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-}
-
 
 
 
@@ -419,7 +371,6 @@ html {
     min-width: 400px; */
 
 }
-
 .blog-card {
     padding-left: 20px; 
     padding-right: 20px; 
@@ -487,4 +438,78 @@ html {
     margin: 10px 0 15px 0;
     width:  calc(50% - 100px);
     opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ====================================================== */
+
+
+@media (max-width: 1250px) {
+
+
+    .contact-sidebar {
+                    position: relative;
+                    bottom: 0; /* Stick to bottom */
+                    left: 0;
+                    width: 100%; /* Full width */
+
+  }
+
+  .projects{max-width: 100%;
+}
+.featured-projects, .blog-card{
+        max-width: 100%;
+        width: 90%;
+
+}
+/* .blog-card{width: 100%;} */
+
+
+.skills-list{max-width: 100%;}
+.about-me{
+    max-width: 90%;
+}
+
+
+
+
+.qualifications, .experience{
+    width:  150%;
+
+}
+  .main-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
 }
