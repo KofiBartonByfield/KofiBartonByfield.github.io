@@ -1,0 +1,7 @@
+When I first got into data work I focused on Python and SQL. They were always presented as the essential tools, so I treated Excel as something basic that I would barely touch once I moved into proper analytics. Now working as a Data Analyst at Ebiquity I have realised how wrong that assumption was.
+
+Excel sits at the centre of a lot of day to day analysis. It is fast, flexible and trusted by almost everyone in the business. I have seen how much time you can save when you know how to structure sheets properly, build clear formulas and keep data tidy. It has also been eye opening to see how many problems can be solved quicker in Excel than in Python.
+
+Learning Power Query has been the biggest shift for me. Being able to clean, merge and reshape data without manual steps makes Excel feel closer to a full data transformation tool. I have also started using external connections to automate refreshes and reduce repetitive work. It has changed how I think about workflow design, especially when dealing with MMM outputs or regular reporting.
+
+It feels strange that many of us learn Python and SQL long before we learn Excel in any serious way. Now that I understand how powerful it actually is I can see why it remains a core tool in most analytics teams. My plan is to keep building on this, explore more advanced Power Query features and push as much automation into my spreadsheets as possible.
