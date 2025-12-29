@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kofi Barton-Byfield | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="Images/icon.png">
+
+
+<style>
+
+
+    h1 {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 20px;
+    }
+
+    .main-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #364459;
+        color: #fff;
+        padding: 15px 30px;
+    }
+    #goalInput {
+        display: block;
+        width: 100%;
+        max-width: 600px;
+        margin: 20px auto 20px auto;
+        padding: 12px 16px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+        /* background-color: #797878; */
+        /* color: #e0e0e0; */
+        box-shadow: 0 0 8px rgba(0,0,0,0.1)
+
+    }
+
+    #goalInput::placeholder {
+        color: #686868;
+    }
+
+    .task-block {
+        /* background-color: #162039; */
+        border-radius: 8px;
+        padding: 5px 15px 15px 15px;
+        margin: 10px auto;
+        max-width: 600px;
+        position: relative;
+        transition: transform 0.1s;
+        box-shadow: 0 0 8px rgba(0,0,0,0.1)
+
+    }
+
+    .task-block:hover {
+        transform: scale(1.01);
+    }
+
+    .goal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        /* margin-bottom: 10px; */
+    }
+
+    .goal-header h3 {
+        font-size: 18px;
+        color: #2e2e2e;
+        margin: 0;
+    }
+
+    .delete-btn {
+        color: #ff6b6b;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: color 0.2s;
+    }
+
+    /* .delete-btn:hover {
+        color: #ff3b3b;
+    } */
+
+    ul { 
+        list-style-type: none; 
+        padding-left: 0; 
+        margin: 0;
+    }
+
+    li { 
+        margin: 4px 0;
+        /* padding: 6px 10px; */
+        /* background-color: #1b2a41; */
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.2s;
+        color: rgb(102, 102, 102);
+    }
+
+    /* li:hover {
+        background-color: #0f1928;
+    } */
+
+    li.done { 
+        text-decoration: line-through; 
+        color: #7a8ca3; 
+        /* background-color: #0d1420; */
+    }
+
+    .spinner {
+        border: 4px solid #162039;
+        border-top: 4px solid #a3cef1;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg);}
+        100% { transform: rotate(360deg);}
+    }
+
+
+
+</style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="logo-title">
+            <h1>Kofi Barton-Byfield</h1>
+            <p>Data Science | Econometrics | Data Analytics</p>
+        </div>
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="projects.html">Projects</a>
+            <a href="blogs.html">Blog</a>
+            <a href="AIList.html" class="active">AI Task List</a>
+        </nav>
+        </nav>
+    </header>
+    <!-- <h1>Start Doing!</h1> -->
+
+
+<input type="text" id="goalInput" placeholder="Add task">
+
+<div id="allTasks"></div>
+
+<script>
+const goalInput = document.getElementById('goalInput');
+const allTasks = document.getElementById('allTasks');
+
+// Load saved tasks from localStorage
+window.addEventListener('DOMContentLoaded', () => {
+    const saved = JSON.parse(localStorage.getItem('goalTasks') || '[]');
+    saved.forEach(item => renderGoal(item.goal, item.tasks));
+});
+
+goalInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        e.preventDefault();
+        const goalText = goalInput.value.trim();
+        if (!goalText) return;
+        addGoal(goalText);
+        goalInput.value = '';
+    }
+});
+
+// Add a new goal and fetch tasks
+async function addGoal(goal) {
+    const tasks = []; // Initially empty
+    renderGoal(goal, tasks, true); // Render immediately with loader
+
+    try {
+        const res = await fetch("http://localhost:5000/plan", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ goal })
+        });
+        const data = await res.json();
+        updateGoalTasks(goal, data.tasks);
+    } catch (err) {
+        alert('Failed to fetch tasks. Try again.');
+        updateGoalTasks(goal, []);
+    }
+}
+
+// Render a goal block
+function renderGoal(goal, tasks = [], showLoader = false) {
+    const block = document.createElement('div');
+    block.className = 'task-block';
+
+    const header = document.createElement('div');
+    header.className = 'goal-header';
+
+    const goalTitle = document.createElement('h3');
+    goalTitle.textContent = goal;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.innerHTML = '🗑';
+    deleteBtn.onclick = () => {
+        block.remove();
+        saveTasksToLocalStorage();
+    };
+
+    header.appendChild(goalTitle);
+    header.appendChild(deleteBtn);
+    block.appendChild(header);
+
+    const ul = document.createElement('ul');
+    tasks.forEach(task => {
+        const li = document.createElement('li');
+        li.textContent = task.title || task.order + '. ' + task.title;
+        if (task.done) li.classList.add('done');
+        li.onclick = () => {
+            li.classList.toggle('done');
+            saveTasksToLocalStorage();
+        };
+        ul.appendChild(li);
+    });
+    block.appendChild(ul);
+
+    if (showLoader) {
+        const loader = document.createElement('div');
+        loader.className = 'spinner';
+        loader.id = 'loader-' + goal;
+        block.appendChild(loader);
+    }
+
+    allTasks.appendChild(block);
+    saveTasksToLocalStorage();
+}
+
+// Update tasks for an existing goal
+function updateGoalTasks(goal, tasks) {
+    const block = Array.from(document.querySelectorAll('.task-block')).find(b => b.querySelector('h3').textContent === goal);
+    if (!block) return;
+
+    const loader = block.querySelector('.spinner');
+    if (loader) loader.remove();
+
+    const ul = block.querySelector('ul');
+    ul.innerHTML = '';
+    tasks.forEach((task, i) => {
+        const li = document.createElement('li');
+        li.textContent = `${i + 1}. ${task.title}`;
+        li.onclick = () => {
+            li.classList.toggle('done');
+            saveTasksToLocalStorage();
+        };
+        ul.appendChild(li);
+    });
+
+    saveTasksToLocalStorage();
+}
+
+// Save all goals/tasks to localStorage
+function saveTasksToLocalStorage() {
+    const blocks = document.querySelectorAll('.task-block');
+    const data = Array.from(blocks).map(block => {
+        const goal = block.querySelector('h3').textContent;
+        const tasks = Array.from(block.querySelectorAll('li')).map(li => ({
+            title: li.textContent,
+            done: li.classList.contains('done')
+        }));
+        return { goal, tasks };
+    });
+    localStorage.setItem('goalTasks', JSON.stringify(data));
+}
+</script>
+</body>
+</html>
