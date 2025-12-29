@@ -250,7 +250,7 @@ async function addGoal(goal) {
     renderGoal(goal, tasks, true); // Render immediately with loader
 
     try {
-        const res = await fetch("http://localhost:5000/plan", {
+        const res = await fetch("https://goal-to-action-api.onrender.com/plan", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ goal })
