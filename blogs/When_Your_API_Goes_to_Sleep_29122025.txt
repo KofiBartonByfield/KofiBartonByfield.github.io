@@ -1,0 +1,8 @@
+I recently built a small system that takes a vague human goal and turns it into a structured, ordered task plan. It is not a chatbot. The focus is on reliable goal decomposition rather than conversation. A static frontend sends a goal to a stateless backend API which calls an LLM, enforces strict JSON output and returns an ordered task list. I deliberately ran the backend on free tier infrastructure. The constraints were the point. Cold starts, latency and unreliable availability force you to think about failure early. Free tiers behave a lot like early production systems, just without the cost.
+
+One of the first issues I hit was the API going dormant. When no requests are received the backend scales to zero. The next request triggers a cold start involving container boot, dependency loading and the first external API call. The result is that the first request often fails while the second succeeds. From a user perspective it looks like a broken app.
+
+This surfaced an important lesson. Many user facing bugs are not logic errors. They are infrastructure timing issues. The frontend was live the whole time. The backend was simply asleep.
+You cannot eliminate cold starts on free tier services but you can design around them. I kept the backend stateless, added retry logic and made failures explicit. On the frontend I added clear loading states, graceful error handling and local storage so user input was never lost.
+
+As a data scientist this was a useful shift in thinking. Model quality is only one part of the system. Reliability, latency and output validation matter just as much. A perfect model is useless if the system does not respond.
