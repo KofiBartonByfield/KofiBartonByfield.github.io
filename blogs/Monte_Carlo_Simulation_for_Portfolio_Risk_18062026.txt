@@ -1,0 +1,9 @@
+One of the more enjoyable projects I've built recently was a portfolio risk simulator. The original goal was straightforward: estimate Value-at-Risk for a multi-asset portfolio using real market data. What I didn't expect was how quickly it turned into something more interesting.
+
+The core method was Monte Carlo simulation. Rather than trying to predict what markets will do, the idea is to generate thousands of plausible futures and study the distribution of outcomes. That shift in framing stuck with me. Risk isn't about forecasting the future precisely, it's about understanding the range of what could happen. It's actually pretty close to the intuition behind the Bayesian modelling I do at work, where uncertainty gets quantified rather than swept under the rug.
+
+The most technically interesting part was handling correlation. Assets don't move independently, and global equity funds in particular tend to move together. That tendency gets stronger during periods of market stress, which is exactly when you need your risk estimates to be reliable.
+
+I also compared three approaches to risk estimation: Monte Carlo simulation, historical simulation and parametric VaR. When they agreed it was reassuring. When they diverged it raised harder questions about distributional assumptions, tail risk, and how much trust to place in a normal distribution when things get bad.
+
+What I took away was less about the methods themselves and more about the mindset. The point of Monte Carlo isn't to produce a single forecast. It's to honestly represent many possible futures at once, which turns out to be a more useful way of thinking about uncertainty than trying to get the prediction exactly right.
