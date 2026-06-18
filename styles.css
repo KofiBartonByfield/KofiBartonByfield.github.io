@@ -221,7 +221,7 @@ body {
     border-radius: var(--radius-lg);
     padding: 24px 28px;
     box-shadow: var(--shadow-card);
-    max-width: 680px;
+    /* max-width: 1000px; */
 }
 
 .blog-card-meta {
