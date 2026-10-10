@@ -1,93 +1,39 @@
-const repoOwner = "KofiBartonByfield";
-const repoName = "KofiBartonByfield.github.io";
-const folderPath = "blogs";
+// Posts live in blogs/ as Title_Words_DDMMYYYY.txt; blogs/posts.json lists them newest first.
+const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const blogTitle = document.getElementById("blog-title");
-const blogDate = document.getElementById("blog-date");
-const blogContent = document.getElementById("blog-content");
-const prevBtn = document.getElementById("prev-blog");
-const nextBtn = document.getElementById("next-blog");
-
-let blogs = [];
-let currentIndex = 0;
-
-// Convert string into Title Case → e.g. "deep_learning_basics" → "Deep Learning Basics"
-function toTitleCase(str) {
-    return str.replace(/\w\S*/g, (word) => {
-        return word.charAt(0).toUpperCase() + word.slice(1);
-    });
+function parse(name) {
+    const [, title, dd, mm, yyyy] = name.match(/^(.+)_(\d{2})(\d{2})(\d{4})\.txt$/);
+    return { name, title: title.replace(/_/g, " "), date: `${+dd} ${months[mm - 1]} ${yyyy}` };
 }
 
-// Format date nicely → e.g. 05092025 → 5 Sep 2025
-function formatDate(dd, mm, yyyy) {
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    return `${parseInt(dd)} ${months[parseInt(mm) - 1]} ${yyyy}`;
-}
+const text = name => fetch(`blogs/${name}`).then(r => r.text());
 
-// Fetch blog file list from GitHub API
-async function fetchBlogs() {
-    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${folderPath}`;
-    const response = await fetch(url);
-    const data = await response.json();
+async function load() {
+    const names = await (await fetch("blogs/posts.json")).json();
+    const latest = document.getElementById("latest-post");
+    const list = document.getElementById("blog-list");
 
-    // Get only .txt files and sort by date (newest first)
-    blogs = data
-        .filter(file => file.name.endsWith(".txt"))
-        .sort((a, b) => {
-            const dateA = a.name.match(/_(\d{2})(\d{2})(\d{4})/);
-            const dateB = b.name.match(/_(\d{2})(\d{2})(\d{4})/);
-            const dA = new Date(`${dateA[3]}-${dateA[2]}-${dateA[1]}`);
-            const dB = new Date(`${dateB[3]}-${dateB[2]}-${dateB[1]}`);
-            return dB - dA; // Newest first
-        });
-
-    displayBlog(currentIndex);
-}
-
-// Display a single blog
-async function displayBlog(index) {
-    if (blogs.length === 0) {
-        blogTitle.textContent = "No blogs yet";
-        blogDate.textContent = "";
-        blogContent.textContent = "";
-        return;
+    if (latest) {
+        const p = parse(names[0]);
+        const body = await text(names[0]);
+        latest.innerHTML = `<h3>${p.title}</h3><p class="blog-date">${p.date}</p><p></p>
+            <a class="text-link" href="blogs.html">Read all posts &rarr;</a>`;
+        latest.querySelector("p:not(.blog-date)").textContent = body.split("\n\n")[0];
     }
 
-    const blog = blogs[index];
-
-    // Get raw content from GitHub
-    const rawUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/main/${folderPath}/${blog.name}`;
-    const response = await fetch(rawUrl);
-    const content = await response.text();
-
-    // Extract title & make it pretty
-    const title = toTitleCase(
-        blog.name
-            .replace(/_\d{8}\.txt$/, "") // Remove _DDMMYYYY.txt
-            .replace(/_/g, " ")          // Replace underscores with spaces
-    );
-
-    // Format date properly
-    const dateMatch = blog.name.match(/_(\d{2})(\d{2})(\d{4})/);
-    const date = formatDate(dateMatch[1], dateMatch[2], dateMatch[3]);
-
-    // Update UI
-    blogTitle.textContent = title;
-    blogDate.textContent = `Published on ${date}`;
-    blogContent.textContent = content;
+    if (list) {
+        list.textContent = "";
+        for (const name of names) {
+            const p = parse(name);
+            const article = document.createElement("article");
+            article.className = "post";
+            article.innerHTML = `<h3>${p.title}</h3><p class="blog-date">${p.date}</p><div class="post-body"></div>`;
+            article.querySelector(".post-body").innerText = await text(name);
+            list.append(article);
+        }
+    }
 }
 
-// Button events
-prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + blogs.length) % blogs.length;
-    displayBlog(currentIndex);
+load().catch(() => {
+    document.querySelectorAll("#latest-post, #blog-list").forEach(el => el.textContent = "Posts could not be loaded.");
 });
-
-nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % blogs.length;
-    displayBlog(currentIndex);
-});
-
-// Load blogs on start
-fetchBlogs();

@@ -1,0 +1,11 @@
+A model that nobody understands is a model that nobody uses. Over the last year I have spent as much effort on explaining results as on producing them, and I think the explaining is the harder skill.
+
+The first lesson was to start with the decision, not the method. A stakeholder does not need to know that the model is hierarchical or which sampler ran. They need to know what changed, how confident we are, and what they should do about it. The method goes in an appendix for the people who want it.
+
+Second, talk about uncertainty in plain terms. "The 94 percent credible interval is wide" means nothing to most audiences. "We are fairly sure this channel is paying for itself, but we cannot tell whether it is a small win or a large one" is something a person can act on. Hiding uncertainty is tempting because it makes you sound sure. It also guarantees an awkward conversation later, when reality lands somewhere inside the range you never mentioned.
+
+Third, one chart beats five. Pick the single picture that carries the message, label it so it can be read without you in the room, and cut everything else. If someone has to ask what the axis is, the chart has not finished its job.
+
+Finally, expect the question you did not prepare for, and treat it as information. When a stakeholder pushes back it is usually because the result clashes with something they know that the model does not. Sometimes they are wrong. Often they have just handed you the next variable to look at.
+
+None of this is about dumbing things down. It is about doing the extra work so the people making the decision can use what you found.

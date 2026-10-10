@@ -3,154 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <title>Projects | Kofi Barton-Byfield</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="Images/icon.png">
-
-
+    <link rel="icon" href="Images/icon.png">
 </head>
 <body>
     <header class="main-header">
         <div class="logo-title">
             <h1>Kofi Barton-Byfield</h1>
-            <p>Data Science | Econometrics | Data Analytics</p>
+            <p>Data Science &middot; Econometrics &middot; Data Analytics</p>
         </div>
         <nav class="main-nav">
             <a href="index.html">Home</a>
             <a href="projects.html" class="active">Projects</a>
             <a href="blogs.html">Blog</a>
-            <a href="AIList.html">AI Task List</a>
         </nav>
     </header>
-
     <main class="content">
-        <section class="projects">
-            <h2>Projects</h2>
-
-                <a href="https://github.com/KofiBartonByfield/Local_Monte_Carlo_Equity_Sim" 
-                class="project-card-link" 
-                target="_blank" 
-                rel="noopener noreferrer">  
-                    <article class="project-card">
-                        <div class="project-icon">
-                            <img src="Images/monte_carlo_engine.png" alt="Monte Carlo Portfolio Simulator">
-                        </div>
-                        <div class="project-text">
-                            <h3>Portfolio Risk Simulator</h3>
-                            <p>Built a Value-at-Risk simulator using Monte Carlo, historical simulation and parametric VaR across a multi-asset portfolio. The interesting part was handling correlation between assets and comparing what the three methods agreed on, and where they didn't.</p>
-                        </div>
-                    </article>
-                </a>
-
-                <a href="AIList.html" class="project-card-link">
-                    <article class="project-card">
-                        <div class="project-icon">
-                            <img src="Images/to_do_list.jpg" alt="">
-                        </div>
-                        <div class="project-text">
-                            <h3>Smart To-Do List</h3>
-                            <p>Built an AI-powered task planning tool that converts high-level goals into structured, executable task lists. Designed and deployed a stateless Flask API integrated with a static JavaScript frontend, handling cold starts, inference failures and persistence trade-offs on free infrastructure.</p>
-                        </div>
-                    </article>
-                </a>
-
-            <a href="Projects/Dublin_pollution.pdf" class="project-card-link">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <img src="Images/aip_pollution.jpg" alt="Police Icon">
-                    </div>
-                    <div class="project-text">
-                        <h3>Air Pollution Prediction in Dublin</h3>
-                        <p>Developed classification models to predict air pollution levels in Dublin based on the DCC Google-AirView dataset, informing strategies for targeted interventions and public alerts.</p>
-                    </div>
-                </article>
-            </a>
-            <a href="Projects/Dissertation.pdf" class="project-card-link">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <img src="Images/police.jpg" alt="Police Icon">
-                    </div>
-                    <div class="project-text">
-                        <h3>Negative Binomial Analysis on Stop and Search</h3>
-                        <p>Comparative analysis of racial dynamics in UK policing using 2022 stop and search datasets from Merseyside and Greater London.</p>
-                    </div>
-                </article>
-            </a>
-            <a href="Projects/SQL_weather.html" class="project-card-link">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <img src="Images/sql.png" alt="SQL Icon">
-                    </div>
-                    <div class="project-text">
-                        <h3>Global Weather Data Pipeline and Analysis with SQLite</h3>
-                        <p>A Python-based system that collects real-time and forecast weather data from the OpenWeather API, stores it in a structured SQLite database, and enables advanced SQL analysis and visualisation of global climate trends.</p>
-                    </div>
-                </article>
-            </a>
-
-            <a href="Projects/Trump.pdf" class="project-card-link">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <img src="Images/trump.png" alt="NLP Icon">
-                    </div>
-                    <div class="project-text">
-                        <h3>Quantitative Text Analysis of Media Sentiment</h3>
-                        <p>An NLP-driven study examining the relationship between media sentiment, public opinion and political focus on Donald Trump.</p>
-                    </div>
-                </article>
-            </a>
-            <a href="Projects/Hawaii.html" class="project-card-link">
-                <article class="project-card">
-                    <div class="project-icon">
-                        <img src="Images/hawaii.jpg" alt="SQL Icon">
-                    </div>
-                    <div class="project-text">
-                        <h3>Segmenting Hawaii’s Airbnb Market with K-Means Clustering</h3>
-                        <p>Developed a K-Means clustering algorithm from scratch to analyse Airbnb listings in Hawaii, identifying market segments based on price, location and availability to reveal patterns in the rental landscape.</p>
-                    </div>
-                </article>
-            </a>
-
-
-        </section>
+        <h2>Projects</h2>
+        <a href="Projects/Dissertation.pdf" class="project-card-link">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/police.jpg" alt="Stop and search"></div>
+                <div class="project-text">
+                    <h3>Negative Binomial Analysis on Stop and Search</h3>
+                    <p>Comparative analysis of racial dynamics in UK policing using 2022 stop and search datasets from Merseyside and Greater London.</p>
+                    <div class="tags"><span>R</span><span>Python</span><span>Count models</span><span>Public policy</span></div>
+                </div>
+            </article>
+        </a>
+        <a href="https://github.com/KofiBartonByfield/Local_Monte_Carlo_Equity_Sim" class="project-card-link" target="_blank" rel="noopener noreferrer">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/monte_carlo_engine.png" alt="Monte Carlo Portfolio Simulator"></div>
+                <div class="project-text">
+                    <h3>Portfolio Risk Simulator</h3>
+                    <p>Built a Value-at-Risk simulator using Monte Carlo, historical simulation and parametric VaR across a multi-asset portfolio. The interesting part was handling correlation between assets and comparing what the three methods agreed on, and where they didn't.</p>
+                    <div class="tags"><span>Python</span><span>Monte Carlo</span><span>Cholesky</span><span>VaR</span></div>
+                </div>
+            </article>
+        </a>
+        <a href="Projects/Dublin_pollution.pdf" class="project-card-link">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/aip_pollution.jpg" alt="Air pollution"></div>
+                <div class="project-text">
+                    <h3>Air Pollution Prediction in Dublin</h3>
+                    <p>Developed classification models to predict air pollution levels in Dublin based on the DCC Google-AirView dataset, informing strategies for targeted interventions and public alerts.</p>
+                    <div class="tags"><span>Python</span><span>Classification</span><span>5M+ rows</span></div>
+                </div>
+            </article>
+        </a>
+        <a href="Projects/SQL_weather.html" class="project-card-link">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/sql.png" alt="SQL"></div>
+                <div class="project-text">
+                    <h3>Global Weather Data Pipeline and Analysis with SQLite</h3>
+                    <p>A Python-based system that collects real-time and forecast weather data from the OpenWeather API, stores it in a structured SQLite database, and enables advanced SQL analysis and visualisation of global climate trends.</p>
+                    <div class="tags"><span>Python</span><span>SQLite</span><span>SQL</span><span>REST API</span></div>
+                </div>
+            </article>
+        </a>
+        <a href="Projects/Trump.pdf" class="project-card-link">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/trump.png" alt="NLP"></div>
+                <div class="project-text">
+                    <h3>Quantitative Text Analysis of Media Sentiment</h3>
+                    <p>An NLP-driven study examining the relationship between media sentiment, public opinion and political focus on Donald Trump.</p>
+                    <div class="tags"><span>NLP</span><span>Sentiment analysis</span></div>
+                </div>
+            </article>
+        </a>
+        <a href="Projects/Hawaii.html" class="project-card-link">
+            <article class="project-card">
+                <div class="project-icon"><img src="Images/hawaii.jpg" alt="Hawaii"></div>
+                <div class="project-text">
+                    <h3>Segmenting Hawaii’s Airbnb Market with K-Means Clustering</h3>
+                    <p>Developed a K-Means clustering algorithm from scratch to analyse Airbnb listings in Hawaii, identifying market segments based on price, location and availability to reveal patterns in the rental landscape.</p>
+                    <div class="tags"><span>Python</span><span>K-Means</span><span>Unsupervised learning</span></div>
+                </div>
+            </article>
+        </a>
     </main>
-
-    <aside class="contact-sidebar">
-        <h3>Contact</h3>
-        <ul class="contact-list">
-            <li>
-                <a href="mailto:kbartonbyfield@gmail.com" target="_blank">
-                    <i class="fa fa-envelope" aria-hidden="true"></i> Email Me
-                </a>
-            </li>
-            <li>
-                    <a href="https://www.linkedin.com/in/kofi-barton-byfield-b7b83a293/" target="_blank" rel="noopener noreferrer">
-                    <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
-                </a>
-            </li>
-            <li>
-                    <a href="https://github.com/KofiBartonByfield" target="_blank" rel="noopener noreferrer">
-                    <i class="fa fa-github" aria-hidden="true"></i> GitHub
-                </a>
-            </li>
-        </ul>
-
-
-        <hr class="sidebar-divider">
-
-        <div class="sidebar-extra">
-            <h4>More Info</h4>
-            <ul>
-                <li><strong>Location:</strong> London, UK</li>
-                <li><strong>Working towards:</strong> Publishing MSc dissertation research</li>
-            </ul>
-        </div>
-                
-    </aside>
-
     <footer class="main-footer">
-        <p>© 2025 Kofi Barton-Byfield</p>
+        <span>&copy; 2026 Kofi Barton-Byfield &middot; London, UK</span>
+        <nav>
+            <a href="mailto:kbartonbyfield@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/kofi-barton-byfield-b7b83a293/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/KofiBartonByfield" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
     </footer>
 </body>
 </html>

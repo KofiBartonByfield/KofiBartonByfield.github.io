@@ -1,0 +1,9 @@
+Most of my statistics education was frequentist. Null hypotheses, p-values, confidence intervals that nobody can quite explain without a slip. Working with Bayesian marketing mix models has changed how I think about all of it.
+
+The first thing that clicked was priors. In a marketing mix model you rarely start from nothing. You know advertising does not have a negative effect on sales, you know roughly how fast a TV campaign decays, and you know a channel's effect cannot plausibly be ten times larger than the whole category. A Bayesian model lets you write that knowledge down as a prior instead of hoping the data alone sorts it out. When the data is noisy, which marketing data usually is, that is the difference between a sensible answer and a ridiculous one.
+
+The second thing was what you get at the end. A frequentist model hands you a point estimate and an interval. A Bayesian model hands you a full distribution for every parameter, and everything downstream inherits that uncertainty. "What is the return on this channel?" becomes "here is the range of returns consistent with the data and what we already knew, and here is how likely it is to be above break-even." That is a much more honest answer, and a much more useful one for someone deciding where to put budget.
+
+It is not free. Priors have to be defended. A badly chosen prior can quietly drive your results, so prior predictive checks, sensitivity analysis and a willingness to say "this part is mostly the prior talking" are part of the job. Sampling diagnostics matter too. A model that has not converged is not a model, however good the plots look.
+
+What I took away is a habit more than a technique. Before fitting anything I now ask what I already believe, how strongly, and what evidence would change my mind. That turns out to be a good question whether or not you ever run a sampler.
